@@ -6,8 +6,15 @@
     <description>Recent content on Ankita Behura</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Jun 2025 15:42:25 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jun 2025 00:02:57 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debugging Docker Images and Containers- A Practical Guide</title>
+      <link>http://localhost:1313/devops/docker-basics/</link>
+      <pubDate>Tue, 10 Jun 2025 00:02:57 +0200</pubDate>
+      <guid>http://localhost:1313/devops/docker-basics/</guid>
+      <description>&lt;p&gt;This guide explains how to &lt;strong&gt;build&lt;/strong&gt;, &lt;strong&gt;debug&lt;/strong&gt;, &lt;strong&gt;inspect&lt;/strong&gt;, and &lt;strong&gt;deploy&lt;/strong&gt; Docker containers with a focus on real-world tasks like transferring images to edge devices (e.g., Orange Pi).&lt;/p&gt;&#xA;&lt;h4 id=&#34;-1-build-a-docker-image-from-a-dockerfile&#34;&gt;🧱 1. Build a Docker Image from a Dockerfile&lt;/h4&gt;&#xA;&lt;p&gt;Use the following command to build a Docker image from a &lt;code&gt;Dockerfile&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker build -t my_image_name .&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;debugging-during-build&#34;&gt;Debugging During Build&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Add temporary steps inside your &lt;code&gt;Dockerfile&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-dockerfile&#34; data-lang=&#34;dockerfile&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; ls -R /app&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;RUN&lt;/span&gt; cat /app/somefile.txt&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Use verbose output for troubleshooting:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Some Thoughts</title>
       <link>http://localhost:1313/random/some-thoughts/</link>

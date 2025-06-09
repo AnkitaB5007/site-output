@@ -79,6 +79,31 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/devops/docker-basics/" rel="bookmark">
+			Debugging Docker Images and Containers- A Practical Guide
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>This guide explains how to <strong>build</strong>, <strong>debug</strong>, <strong>inspect</strong>, and <strong>deploy</strong> Docker containers with a focus on real-world tasks like transferring images to edge devices (e.g., Orange Pi).</p>
+<h4 id="-1-build-a-docker-image-from-a-dockerfile">🧱 1. Build a Docker Image from a Dockerfile</h4>
+<p>Use the following command to build a Docker image from a <code>Dockerfile</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build -t my_image_name .
+</span></span></code></pre></div><h3 id="debugging-during-build">Debugging During Build</h3>
+<ul>
+<li>
+<p>Add temporary steps inside your <code>Dockerfile</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> ls -R /app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cat /app/somefile.txt<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div></li>
+<li>
+<p>Use verbose output for troubleshooting:</p>
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/devops/my-devops-post/" rel="bookmark">
 			My DevOps Journey- First CI
 			</a>

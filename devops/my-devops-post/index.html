@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My DevOps Journey- First CI - Ankita Behura</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Ankita Behura" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Ankita Behura</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/devops/">
+				
+				<span class="menu__text">Devops</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ml-dl/">
+				
+				<span class="menu__text">ML/DL</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/random/">
+				
+				<span class="menu__text">Random</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">My DevOps Journey- First CI</h1>
+			
+		</header>
+		<div class="content post__content clearfix">
+			<h2 id="best-practices-in-devops">Best Practices in DevOps</h2>
+<p>DevOps bridges development and operations, improving software delivery through automation, collaboration, and continuous improvement. Here are some core best practices:</p>
+<hr>
+<h3 id="continuous-integration-ci"><strong>Continuous Integration (CI)</strong></h3>
+<p>Continuous Integration is the process of automatically testing and validating code changes to maintain high code quality and catch issues early.</p>
+<ul>
+<li>
+<p><strong>Key Benefits:</strong></p>
+<ul>
+<li>Early bug detection</li>
+<li>Improved code quality</li>
+<li>Faster feedback loops</li>
+</ul>
+</li>
+<li>
+<p><strong>Popular CI Tools:</strong></p>
+<ul>
+<li>GitHub Actions</li>
+<li>Jenkins</li>
+<li>GitLab CI</li>
+<li>CircleCI</li>
+<li>AWS CodeBuild</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="continuous-delivery-cd"><strong>Continuous Delivery (CD)</strong></h3>
+<p>Continuous Delivery automates the delivery of code to production or staging environments, often leveraging Infrastructure as Code (IaC) for reproducibility and reliability.</p>
+<ul>
+<li><strong>Key Points:</strong>
+<ul>
+<li>Deploys code without human intervention</li>
+<li>Reduces deployment risks</li>
+<li>Enables frequent releases</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="microservices"><strong>Microservices</strong></h3>
+<p>A microservice is a small, independent service that performs a distinct function with minimal dependencies.</p>
+<ul>
+<li>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Easier scaling</li>
+<li>Independent deployments</li>
+<li>Improved fault isolation</li>
+</ul>
+</li>
+<li>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Python Flask microservice for a machine learning endpoint</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="infrastructure-as-code-iac"><strong>Infrastructure as Code (IaC)</strong></h3>
+<p>IaC involves managing and provisioning infrastructure through code, enabling version control, automation, and consistency.</p>
+<ul>
+<li><strong>Benefits:</strong>
+<ul>
+<li>Idempotent deployments</li>
+<li>Reduced manual intervention</li>
+<li>Traceable infrastructure changes</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="how-to-implement-devops-a-basic-guide">How to Implement DevOps (A Basic Guide)</h2>
+<h3 id="step-1-scaffold-your-python-project"><strong>Step 1: Scaffold Your Python Project</strong></h3>
+<p>Create the foundational files for your project:</p>
+<ul>
+<li><code>Makefile</code></li>
+<li><code>requirements.txt</code></li>
+<li><code>hello.py</code></li>
+<li><code>test_hello.py</code></li>
+<li>Virtual Environment</li>
+</ul>
+<h3 id="step-2-create-a-virtual-environment"><strong>Step 2: Create a Virtual Environment</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 -m venv ~/.your-repo-name
+</span></span><span style="display:flex;"><span>source ~/.your-repo-name/bin/activate
+</span></span></code></pre></div><h3 id="step-3-use-a-makefile-for-automation"><strong>Step 3: Use a Makefile for Automation</strong></h3>
+<p>A Makefile simplifies complex build steps. For example, instead of running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pylint --disable<span style="color:#f92672">=</span>R,C *.py
+</span></span></code></pre></div><p>You can just run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make lint
+</span></span></code></pre></div><hr>
+<h2 id="local-continuous-integration-journey">Local Continuous Integration Journey</h2>
+<p>Once your project is scaffolded, follow these steps locally:</p>
+<ol>
+<li><code>make install</code></li>
+<li><code>make lint</code></li>
+<li><code>make test</code></li>
+</ol>
+<p>When these commands succeed locally, you can easily integrate the same process with a remote CI server like GitHub Actions.</p>
+<hr>
+<h2 id="configuring-continuous-integration-with-github-actions">Configuring Continuous Integration with GitHub Actions</h2>
+<h3 id="step-1-create-a-workflow-file"><strong>Step 1: Create a Workflow File</strong></h3>
+<p>In your GitHub repository, go to the <strong>Actions</strong> tab and create a new workflow file at:</p>
+<pre tabindex="0"><code>.github/workflows/.yml
+</code></pre><h3 id="step-2-example-workflow-for-python-35"><strong>Step 2: Example Workflow for Python 3.5</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Azure Python 3.5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>: [<span style="color:#ae81ff">push]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Set up Python 3.5.10</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-python@v1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">python-version</span>: <span style="color:#ae81ff">3.5.10</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install dependencies</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          make install</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Lint</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          make lint</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Test</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          make test</span>
+</span></span></code></pre></div><hr>
+<h3 id="notes-on-github-actions"><strong>Notes on GitHub Actions</strong></h3>
+<ul>
+<li>
+<p><code>uses: actions/checkout@v4</code><br>
+This line tells GitHub Actions to clone your repository into the runner’s filesystem. Without it, the workflow cannot access your source code.</p>
+</li>
+<li>
+<p><strong>Purpose:</strong><br>
+Downloads your repository so the runner can build, lint, and test it.</p>
+</li>
+<li>
+<p><strong>Typical behavior:</strong><br>
+Equivalent to running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/your-repo/your-project.git
+</span></span></code></pre></div><p>into the default working directory <code>$GITHUB_WORKSPACE</code>.</p>
+</li>
+</ul>
+<hr>
+<h2 id="summary"><strong>Summary</strong></h2>
+<p>By following these steps and best practices, you can lay a strong foundation for DevOps in your projects, enabling reliable builds, automated testing, and streamlined deployments from day one.</p>
+
+		</div>
+	</article>
+</main>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2025 Ankita Behura.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

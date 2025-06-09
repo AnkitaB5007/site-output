@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Devops on Ankita Behura</title><link>https://behura.com/devops/</link><description>Recent content in Devops on Ankita Behura</description><generator>Hugo</generator><language>en-us</language><lastBuildDate/><atom:link href="https://behura.com/devops/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devops on Ankita Behura</title>
+    <link>http://localhost:1313/devops/</link>
+    <description>Recent content in Devops on Ankita Behura</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jun 2025 15:41:28 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My DevOps Journey- First CI</title>
+      <link>http://localhost:1313/devops/my-devops-post/</link>
+      <pubDate>Sat, 07 Jun 2025 15:41:28 +0200</pubDate>
+      <guid>http://localhost:1313/devops/my-devops-post/</guid>
+      <description>&lt;h2 id=&#34;best-practices-in-devops&#34;&gt;Best Practices in DevOps&lt;/h2&gt;&#xA;&lt;p&gt;DevOps bridges development and operations, improving software delivery through automation, collaboration, and continuous improvement. Here are some core best practices:&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;continuous-integration-ci&#34;&gt;&lt;strong&gt;Continuous Integration (CI)&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Continuous Integration is the process of automatically testing and validating code changes to maintain high code quality and catch issues early.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Key Benefits:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Early bug detection&lt;/li&gt;&#xA;&lt;li&gt;Improved code quality&lt;/li&gt;&#xA;&lt;li&gt;Faster feedback loops&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Popular CI Tools:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GitHub Actions&lt;/li&gt;&#xA;&lt;li&gt;Jenkins&lt;/li&gt;&#xA;&lt;li&gt;GitLab CI&lt;/li&gt;&#xA;&lt;li&gt;CircleCI&lt;/li&gt;&#xA;&lt;li&gt;AWS CodeBuild&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;continuous-delivery-cd&#34;&gt;&lt;strong&gt;Continuous Delivery (CD)&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Continuous Delivery automates the delivery of code to production or staging environments, often leveraging Infrastructure as Code (IaC) for reproducibility and reliability.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

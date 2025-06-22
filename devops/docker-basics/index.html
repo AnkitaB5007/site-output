@@ -1,200 +1,38 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Debugging Docker Images and Containers- A Practical Guide - Ankita Behura</title>
-	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-
-	<link rel="stylesheet" href="/css/style.css">
-	
-
-	<link rel="shortcut icon" href="/favicon.ico">
-		
-</head>
-<body class="body">
-	<div class="container container--outer">
-		<header class="header">
-	<div class="container header__container">
-		
-	<div class="logo">
-		<a class="logo__link" href="/" title="Ankita Behura" rel="home">
-			<div class="logo__item logo__text">
-					<div class="logo__title">Ankita Behura</div>
-					
-				</div>
-		</a>
-	</div>
-		
-<nav class="menu">
-	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-		<span class="menu__btn-title" tabindex="-1">Menu</span>
-	</button>
-	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/about/">
-				
-				<span class="menu__text">About</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/devops/">
-				
-				<span class="menu__text">Devops</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/ml-dl/">
-				
-				<span class="menu__text">ML/DL</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/random/">
-				
-				<span class="menu__text">Random</span>
-				
-			</a>
-		</li>
-	</ul>
-</nav>
-
-	</div>
-</header>
-		<div class="wrapper flex">
-			<div class="primary">
-			
-<main class="main" role="main">
-	<article class="post">
-		<header class="post__header">
-			<h1 class="post__title">Debugging Docker Images and Containers- A Practical Guide</h1>
-			
-		</header>
-		<div class="content post__content clearfix">
-			<p>This guide explains how to <strong>build</strong>, <strong>debug</strong>, <strong>inspect</strong>, and <strong>deploy</strong> Docker containers with a focus on real-world tasks like transferring images to edge devices (e.g., Orange Pi).</p>
-<h4 id="-1-build-a-docker-image-from-a-dockerfile">🧱 1. Build a Docker Image from a Dockerfile</h4>
-<p>Use the following command to build a Docker image from a <code>Dockerfile</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build -t my_image_name .
-</span></span></code></pre></div><h3 id="debugging-during-build">Debugging During Build</h3>
-<ul>
-<li>
-<p>Add temporary steps inside your <code>Dockerfile</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> ls -R /app<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cat /app/somefile.txt<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div></li>
-<li>
-<p>Use verbose output for troubleshooting:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build --progress<span style="color:#f92672">=</span>plain -t my_image_name .
-</span></span></code></pre></div></li>
-</ul>
-<hr>
-<h4 id="-2-run-and-inspect-a-container">🔍 2. Run and Inspect a Container</h4>
-<h3 id="start-a-container-with-a-shell">Start a Container with a Shell</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it --entrypoint /bin/bash my_image_name
-</span></span></code></pre></div><ul>
-<li><code>-it</code>: Interactive terminal</li>
-<li><code>--entrypoint</code>: Override default CMD to get shell access</li>
-</ul>
-<h3 id="inspect-internals">Inspect Internals</h3>
-<p>Once inside the container:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls /app
-</span></span><span style="display:flex;"><span>cat /etc/os-release
-</span></span><span style="display:flex;"><span>which python3
-</span></span></code></pre></div><hr>
-<h4 id="-3-useful-debugging-commands">🧰 3. Useful Debugging Commands</h4>
-<h3 id="run-in-detached-mode-and-connect">Run in Detached Mode and Connect</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -dit --name my_container my_image_name
-</span></span><span style="display:flex;"><span>docker exec -it my_container /bin/bash
-</span></span></code></pre></div><h3 id="logs-and-metadata">Logs and Metadata</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker logs my_container
-</span></span><span style="display:flex;"><span>docker inspect my_container
-</span></span></code></pre></div><hr>
-<h4 id="-4-move-files-between-host-and-container">📂 4. Move Files Between Host and Container</h4>
-<h3 id="copy-from-host-to-container">Copy from Host to Container</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker cp ./host_file.txt my_container:/app/host_file.txt
-</span></span></code></pre></div><h3 id="copy-from-container-to-host">Copy from Container to Host</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker cp my_container:/app/output.txt ./output.txt
-</span></span></code></pre></div><hr>
-<h4 id="-5-explore-docker-image-layers">🧠 5. Explore Docker Image Layers</h4>
-<p>Use <a href="https://github.com/wagoodman/dive"><code>dive</code></a> to inspect image layers and filesystem changes.</p>
-<p>Install:</p>
-<h3 id="ubuntu">Ubuntu</h3>
-<pre tabindex="0"><code>sudo apt install dive
-</code></pre><p>Use:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dive my_image_name
-</span></span></code></pre></div><hr>
-<h4 id="-6-deploy-docker-image-to-orange-pi">🚀 6. Deploy Docker Image to Orange Pi</h4>
-<h3 id="option-1-transfer-via-scp">Option 1: Transfer via SCP</h3>
-<ol>
-<li>
-<p>Save image as tarball:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker save my_image_name &gt; my_image.tar
-</span></span></code></pre></div></li>
-<li>
-<p>Copy to Orange Pi:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>scp my_image.tar orangepi@&lt;ip_address&gt;:~/
-</span></span></code></pre></div></li>
-<li>
-<p>SSH and Load:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh orangepi@&lt;ip_address&gt;
-</span></span><span style="display:flex;"><span>docker load &lt; my_image.tar
-</span></span><span style="display:flex;"><span>docker run -it my_image_name
-</span></span></code></pre></div></li>
-</ol>
-<h3 id="option-2-docker-hub-or-github-container-registry">Option 2: Docker Hub or GitHub Container Registry</h3>
-<ol>
-<li>
-<p>Tag and push:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker tag my_image_name username/my_image_name:latest
-</span></span><span style="display:flex;"><span>docker push username/my_image_name:latest
-</span></span></code></pre></div></li>
-<li>
-<p>On Orange Pi:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull username/my_image_name:latest
-</span></span><span style="display:flex;"><span>docker run -it username/my_image_name:latest
-</span></span></code></pre></div></li>
-</ol>
-<hr>
-<h4 id="-minimal-debuggable-dockerfile-example">🧪 Minimal Debuggable Dockerfile Example</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.10-slim</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . /app<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install -r requirements.txt<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONPATH<span style="color:#f92672">=</span>/app<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;bash&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>For automation, container registry integration, or CI/CD workflows using GitHub Actions, see the next part of this blog series.</p>
-
-		</div>
-	</article>
-</main>
-
-
-
-
-			</div>
-			
-		</div>
-		<footer class="footer">
-	<div class="container footer__container flex">
-		
-		<div class="footer__copyright">
-			&copy; 2025 Ankita Behura.
-			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
-		</div>
-	</div>
-</footer>
-	</div>
-<script async defer src="/js/menu.js"></script>
-</body>
-</html>
+<!doctype html><html class=no-js lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Debugging Docker Images and Containers- A Practical Guide - Ankita Behura</title>
+<script>(function(e,t){e[t]=e[t].replace("no-js","js")})(document.documentElement,"className")</script><meta name=description content><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="Ankita Behura" rel=home><div class="logo__item logo__text"><div class=logo__title>Ankita Behura</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>Menu</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/about/><span class=menu__text>About</span></a></li><li class=menu__item><a class=menu__link href=/devops/><span class=menu__text>Devops</span></a></li><li class=menu__item><a class=menu__link href=/ml-dl/><span class=menu__text>ML/DL</span></a></li><li class=menu__item><a class=menu__link href=/random/><span class=menu__text>Random</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Debugging Docker Images and Containers- A Practical Guide</h1></header><div class="content post__content clearfix"><p>This guide explains how to <strong>build</strong>, <strong>debug</strong>, <strong>inspect</strong>, and <strong>deploy</strong> Docker containers with a focus on real-world tasks like transferring images to edge devices (e.g., Orange Pi).</p><h4 id=-1-build-a-docker-image-from-a-dockerfile>🧱 1. Build a Docker Image from a Dockerfile</h4><p>Use the following command to build a Docker image from a <code>Dockerfile</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker build -t my_image_name .
+</span></span></code></pre></div><h3 id=debugging-during-build>Debugging During Build</h3><ul><li><p>Add temporary steps inside your <code>Dockerfile</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#66d9ef>RUN</span> ls -R /app<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> cat /app/somefile.txt<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div></li><li><p>Use verbose output for troubleshooting:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker build --progress<span style=color:#f92672>=</span>plain -t my_image_name .
+</span></span></code></pre></div></li></ul><hr><h4 id=-2-run-and-inspect-a-container>🔍 2. Run and Inspect a Container</h4><h3 id=start-a-container-with-a-shell>Start a Container with a Shell</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker run -it --entrypoint /bin/bash my_image_name
+</span></span></code></pre></div><ul><li><code>-it</code>: Interactive terminal</li><li><code>--entrypoint</code>: Override default CMD to get shell access</li></ul><h3 id=inspect-internals>Inspect Internals</h3><p>Once inside the container:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ls /app
+</span></span><span style=display:flex><span>cat /etc/os-release
+</span></span><span style=display:flex><span>which python3
+</span></span></code></pre></div><hr><h4 id=-3-useful-debugging-commands>🧰 3. Useful Debugging Commands</h4><h3 id=run-in-detached-mode-and-connect>Run in Detached Mode and Connect</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker run -dit --name my_container my_image_name
+</span></span><span style=display:flex><span>docker exec -it my_container /bin/bash
+</span></span></code></pre></div><h3 id=logs-and-metadata>Logs and Metadata</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker logs my_container
+</span></span><span style=display:flex><span>docker inspect my_container
+</span></span></code></pre></div><hr><h4 id=-4-move-files-between-host-and-container>📂 4. Move Files Between Host and Container</h4><h3 id=copy-from-host-to-container>Copy from Host to Container</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker cp ./host_file.txt my_container:/app/host_file.txt
+</span></span></code></pre></div><h3 id=copy-from-container-to-host>Copy from Container to Host</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker cp my_container:/app/output.txt ./output.txt
+</span></span></code></pre></div><hr><h4 id=-5-explore-docker-image-layers>🧠 5. Explore Docker Image Layers</h4><p>Use <a href=https://github.com/wagoodman/dive><code>dive</code></a> to inspect image layers and filesystem changes.</p><p>Install:</p><h3 id=ubuntu>Ubuntu</h3><pre tabindex=0><code>sudo apt install dive
+</code></pre><p>Use:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>dive my_image_name
+</span></span></code></pre></div><hr><h4 id=-6-deploy-docker-image-to-orange-pi>🚀 6. Deploy Docker Image to Orange Pi</h4><h3 id=option-1-transfer-via-scp>Option 1: Transfer via SCP</h3><ol><li><p>Save image as tarball:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker save my_image_name &gt; my_image.tar
+</span></span></code></pre></div></li><li><p>Copy to Orange Pi:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>scp my_image.tar orangepi@&lt;ip_address&gt;:~/
+</span></span></code></pre></div></li><li><p>SSH and Load:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh orangepi@&lt;ip_address&gt;
+</span></span><span style=display:flex><span>docker load &lt; my_image.tar
+</span></span><span style=display:flex><span>docker run -it my_image_name
+</span></span></code></pre></div></li></ol><h3 id=option-2-docker-hub-or-github-container-registry>Option 2: Docker Hub or GitHub Container Registry</h3><ol><li><p>Tag and push:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker tag my_image_name username/my_image_name:latest
+</span></span><span style=display:flex><span>docker push username/my_image_name:latest
+</span></span></code></pre></div></li><li><p>On Orange Pi:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker pull username/my_image_name:latest
+</span></span><span style=display:flex><span>docker run -it username/my_image_name:latest
+</span></span></code></pre></div></li></ol><hr><h4 id=-minimal-debuggable-dockerfile-example>🧪 Minimal Debuggable Dockerfile Example</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> python:3.10-slim</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>WORKDIR</span><span style=color:#e6db74> /app</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> . /app<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> pip install -r requirements.txt<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>ENV</span> PYTHONPATH<span style=color:#f92672>=</span>/app<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>CMD</span> [<span style=color:#e6db74>&#34;bash&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><p>For automation, container registry integration, or CI/CD workflows using GitHub Actions, see the next part of this blog series.</p></div></article></main></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2025 Ankita Behura.
+<span class=footer__copyright-credits>Generated with <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> theme.</span></div></div></footer></div><script async defer src=/js/menu.js></script></body></html>
